@@ -1,2 +1,2 @@
 # MovieApp
- Web Application for Recommendation Media
+ Web Application for Recommendation Media using JEE
