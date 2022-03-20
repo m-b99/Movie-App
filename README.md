@@ -1,2 +1,2 @@
 # MovieApp
-Development of a Media Recommendation Web Application
+ Web Application for Recommendation Media
