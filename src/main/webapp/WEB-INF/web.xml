@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <display-name>MovieApp</display-name>
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <filter>
+        <filter-name>EncodingFilter</filter-name>
+        <filter-class>ma.ac.ensias.controller.filter.EncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>utf-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>EncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>AuthenticationFilter</filter-name>
+        <filter-class>ma.ac.ensias.controller.filter.AuthenticationFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthenticationFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>PermissionFilter</filter-name>
+        <filter-class>ma.ac.ensias.controller.filter.PermissionFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>PermissionFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>XssEscapeFilter</filter-name>
+        <filter-class>ma.ac.ensias.controller.filter.XssEscapeFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>XssEscapeFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>ErrorMessageFilter</filter-name>
+        <filter-class>ma.ac.ensias.controller.filter.MessageFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ErrorMessageFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>LocaleFilter</filter-name>
+        <filter-class>ma.ac.ensias.controller.filter.LocaleFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LocaleFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>ReturnUrlFilter</filter-name>
+        <filter-class>ma.ac.ensias.controller.filter.ReturnUrlFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ReturnUrlFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <listener>
+        <listener-class>ma.ac.ensias.controller.listener.SessionListener</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>ma.ac.ensias.controller.listener.ConnectionPoolListener</listener-class>
+    </listener>
+    <jsp-config>
+        <taglib>
+            <taglib-uri>custom_tags</taglib-uri>
+            <taglib-location>/WEB-INF/tld/custom.tld</taglib-location>
+        </taglib>
+    </jsp-config>
+
+    <session-config>
+        <session-timeout>180</session-timeout>
+    </session-config>
+</web-app>
